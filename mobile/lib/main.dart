@@ -42,16 +42,16 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
+            Spacer(),
             Container(
               child: Padding(
-                padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
+                padding: EdgeInsets.all(30),
                 child: Text(
                     'Edit Profile',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 25,
-                        color: Color(0xFF4169e1),
-                        fontFamily: 'Helvetica'
+                        fontSize: 35,
+                        color: Color(0xFF4169e1)
                     )
                 ),
               )
@@ -93,6 +93,72 @@ class _MyHomePageState extends State<MyHomePage> {
                 )
               ],
             ),
+            Spacer(),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Container(
+                    height: 75,
+                    child: OutlinedButton(
+                      child: const Text("Button text"),
+                      onPressed: () {
+                        print('Clicked Here 1');
+                      },
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Container(
+                    height: 75,
+                    child: OutlinedButton(
+                      child: const Text("Button text"),
+                      onPressed: () {
+                        print('Clicked Here 1');
+                      },
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Container(
+                    height: 75,
+                    child: OutlinedButton(
+                      child: const Text("Button text"),
+                      onPressed: () {
+                        print('Clicked Here 1');
+                      },
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Container(
+                    height: 75,
+                    child: OutlinedButton(
+                      child: const Text("Button text"),
+                      onPressed: () {
+                        print('Clicked Here 1');
+                      },
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Spacer(),
           ],
         ),
       ),
