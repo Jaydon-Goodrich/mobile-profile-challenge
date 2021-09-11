@@ -27,7 +27,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  // int _counter = 0;
+  var dataObj = {
+    'name': 'Jaydon Goodrich',
+    'phone': '(801) 673-5586',
+    'email': 'JaydonGoodrich@gmail.com',
+    'about_me': 'This is a little about me and who I am.'
+  };
 
   // void _incrementCounter() {
   //   setState(() {
@@ -37,7 +42,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: Center(
         child: Column(
@@ -45,18 +49,14 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             Spacer(),
             Container(
-              child: Padding(
-                padding: EdgeInsets.all(30),
-                child: Text(
-                    'Edit Profile',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 35,
-                        color: Color(0xFF4169e1)
-                    )
-                ),
-              )
-            ),
+                child: Padding(
+              padding: EdgeInsets.all(30),
+              child: Text('Edit Profile',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 35,
+                      color: Color(0xFF4169e1))),
+            )),
             Stack(
               alignment: Alignment.center,
               children: [
@@ -64,16 +64,15 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: 150.0,
                   height: 150.0,
                   decoration: new BoxDecoration(
-                    border: Border.all(
-                      color: Color(0xFF4169e1),
-                      width: 5,
-                    ),
-                    shape: BoxShape.circle,
-                    image: new DecorationImage(
+                      border: Border.all(
+                        color: Color(0xFF4169e1),
+                        width: 5,
+                      ),
+                      shape: BoxShape.circle,
+                      image: new DecorationImage(
                         fit: BoxFit.fill,
                         image: ExactAssetImage('assets/images/profilePic1.jpg'),
-                    )
-                  ),
+                      )),
                 ),
                 Align(
                   alignment: Alignment.center,
@@ -81,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     padding: EdgeInsets.fromLTRB(100, 0, 0, 100),
                     child: ElevatedButton(
                       onPressed: () {
-                        print('Clicked!');
+                        print(dataObj['email1']);
                       },
                       child: Icon(Icons.create_sharp, color: Color(0xFF4169e1)),
                       style: ElevatedButton.styleFrom(
@@ -105,11 +104,18 @@ class _MyHomePageState extends State<MyHomePage> {
                       style: ElevatedButton.styleFrom(
                         primary: Color(0xFFf9f9f9),
                       ),
-                      onPressed: () {
-                        Navigator.push(
+                      onPressed: () async {
+                        final returnedData = await Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => EditPage(editType: 'name')),
+                          MaterialPageRoute(
+                              builder: (context) => EditPage(
+                                  editType: 'name',
+                                  editLabel: 'Full Name',
+                                  data: dataObj)),
                         );
+                        setState(() {
+                          dataObj = returnedData;
+                        });
                       },
                       child: Padding(
                         padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
@@ -132,12 +138,14 @@ class _MyHomePageState extends State<MyHomePage> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
-                                Text(
-                                  'Jaydon Goodrich',
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w700,
-                                    color: Colors.black,
+                                Flexible(
+                                  child: Text(
+                                    dataObj['name'] ?? 'No Name',
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w700,
+                                      color: Colors.black,
+                                    ),
                                   ),
                                 ),
                                 Icon(
@@ -164,11 +172,18 @@ class _MyHomePageState extends State<MyHomePage> {
                       style: ElevatedButton.styleFrom(
                         primary: Color(0xFFf9f9f9),
                       ),
-                      onPressed: () {
-                        Navigator.push(
+                      onPressed: () async {
+                        final returnedData = await Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => EditPage(editType: 'phone number', label: 'Full Name')),
+                          MaterialPageRoute(
+                              builder: (context) => EditPage(
+                                  editType: 'phone number',
+                                  editLabel: 'Phone Number',
+                                  data: dataObj)),
                         );
+                        setState(() {
+                          dataObj = returnedData;
+                        });
                       },
                       child: Padding(
                         padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
@@ -191,12 +206,14 @@ class _MyHomePageState extends State<MyHomePage> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
-                                Text(
-                                  '(801) 673-5586',
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w700,
-                                    color: Colors.black,
+                                Flexible(
+                                  child: Text(
+                                    dataObj['phone'] ?? 'No Phone Number',
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w700,
+                                      color: Colors.black,
+                                    ),
                                   ),
                                 ),
                                 Icon(
@@ -223,11 +240,18 @@ class _MyHomePageState extends State<MyHomePage> {
                       style: ElevatedButton.styleFrom(
                         primary: Color(0xFFf9f9f9),
                       ),
-                      onPressed: () {
-                        Navigator.push(
+                      onPressed: () async {
+                        final returnedData = await Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => EditPage(editType: 'email')),
+                          MaterialPageRoute(
+                              builder: (context) => EditPage(
+                                  editType: 'email',
+                                  editLabel: 'Email',
+                                  data: dataObj)),
                         );
+                        setState(() {
+                          dataObj = returnedData;
+                        });
                       },
                       child: Padding(
                         padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
@@ -250,12 +274,14 @@ class _MyHomePageState extends State<MyHomePage> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
-                                Text(
-                                  'JaydonGoodrich@gmail.com',
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w700,
-                                    color: Colors.black,
+                                Flexible(
+                                  child: Text(
+                                    dataObj['email'] ?? 'No Email',
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w700,
+                                      color: Colors.black,
+                                    ),
                                   ),
                                 ),
                                 Icon(
@@ -282,11 +308,18 @@ class _MyHomePageState extends State<MyHomePage> {
                       style: ElevatedButton.styleFrom(
                         primary: Color(0xFFf9f9f9),
                       ),
-                      onPressed: () {
-                        Navigator.push(
+                      onPressed: () async {
+                        final returnedData = await Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => EditPage(editType: 'favorite place to eat')),
+                          MaterialPageRoute(
+                              builder: (context) => EditPage(
+                                  editType: 'favorite place to eat',
+                                  editLabel: 'About You',
+                                  data: dataObj)),
                         );
+                        setState(() {
+                          dataObj = returnedData;
+                        });
                       },
                       child: Padding(
                         padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
@@ -311,7 +344,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    'My name is Jaydon and I love web development and building new things. I like watching basketball and football.',
+                                    dataObj['about_me'] ?? 'No About',
                                     style: TextStyle(
                                       fontSize: 17,
                                       fontWeight: FontWeight.w700,
