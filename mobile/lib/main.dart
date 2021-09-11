@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'edit.dart';
 
 void main() {
   runApp(MyApp());
@@ -70,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     shape: BoxShape.circle,
                     image: new DecorationImage(
                         fit: BoxFit.fill,
-                        image: ExactAssetImage('assets/images/profile1.jpg'),
+                        image: ExactAssetImage('assets/images/profilePic1.jpg'),
                     )
                   ),
                 ),
@@ -100,11 +101,54 @@ class _MyHomePageState extends State<MyHomePage> {
                 Expanded(
                   child: Container(
                     height: 75,
-                    child: OutlinedButton(
-                      child: const Text("Button text"),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Color(0xFFf9f9f9),
+                      ),
                       onPressed: () {
-                        print('Clicked Here 1');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => EditPage(editType: 'name')),
+                        );
                       },
+                      child: Padding(
+                        padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+                        child: Column(
+                          children: [
+                            SizedBox(height: 5),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Name',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    color: Color(0xFFb2b3b3),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 5),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Text(
+                                  'Jaydon Goodrich',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                Icon(
+                                  Icons.arrow_forward_ios,
+                                  color: Color(0xFFb2b3b3),
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -116,11 +160,54 @@ class _MyHomePageState extends State<MyHomePage> {
                 Expanded(
                   child: Container(
                     height: 75,
-                    child: OutlinedButton(
-                      child: const Text("Button text"),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Color(0xFFf9f9f9),
+                      ),
                       onPressed: () {
-                        print('Clicked Here 1');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => EditPage(editType: 'phone number', label: 'Full Name')),
+                        );
                       },
+                      child: Padding(
+                        padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+                        child: Column(
+                          children: [
+                            SizedBox(height: 5),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Phone',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    color: Color(0xFFb2b3b3),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 5),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Text(
+                                  '(801) 673-5586',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                Icon(
+                                  Icons.arrow_forward_ios,
+                                  color: Color(0xFFb2b3b3),
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -132,11 +219,54 @@ class _MyHomePageState extends State<MyHomePage> {
                 Expanded(
                   child: Container(
                     height: 75,
-                    child: OutlinedButton(
-                      child: const Text("Button text"),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Color(0xFFf9f9f9),
+                      ),
                       onPressed: () {
-                        print('Clicked Here 1');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => EditPage(editType: 'email')),
+                        );
                       },
+                      child: Padding(
+                        padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+                        child: Column(
+                          children: [
+                            SizedBox(height: 5),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Email',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    color: Color(0xFFb2b3b3),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 5),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Text(
+                                  'JaydonGoodrich@gmail.com',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                Icon(
+                                  Icons.arrow_forward_ios,
+                                  color: Color(0xFFb2b3b3),
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -147,12 +277,57 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 Expanded(
                   child: Container(
-                    height: 75,
-                    child: OutlinedButton(
-                      child: const Text("Button text"),
+                    height: 125,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Color(0xFFf9f9f9),
+                      ),
                       onPressed: () {
-                        print('Clicked Here 1');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => EditPage(editType: 'favorite place to eat')),
+                        );
                       },
+                      child: Padding(
+                        padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+                        child: Column(
+                          children: [
+                            SizedBox(height: 5),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Tell us about yourself',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    color: Color(0xFFb2b3b3),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 5),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Flexible(
+                                  child: Text(
+                                    'My name is Jaydon and I love web development and building new things. I like watching basketball and football.',
+                                    style: TextStyle(
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.w700,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ),
+                                Icon(
+                                  Icons.arrow_forward_ios,
+                                  color: Color(0xFFb2b3b3),
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
                 ),
