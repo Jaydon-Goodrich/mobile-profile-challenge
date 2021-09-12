@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'edit.dart';
+import 'editImage.dart';
+import 'dart:io';
+import 'package:flutter/services.dart' show rootBundle;
+import 'package:path_provider/path_provider.dart';
 
 void main() {
   runApp(MyApp());
@@ -7,6 +11,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -34,11 +39,29 @@ class _MyHomePageState extends State<MyHomePage> {
     'about_me': 'This is a little about me and who I am.'
   };
 
-  // void _incrementCounter() {
-  //   setState(() {
-  //     _counter++;
-  //   });
-  // }
+  var _image;
+
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      getImageFileFromAssets('/images/profilePic1.jpg');
+    });
+  }
+
+  Future<File> getImageFileFromAssets(String path) async {
+    final byteData = await rootBundle.load('assets/$path');
+    final file = File('${(await getTemporaryDirectory()).path}/image.png');
+    await file.writeAsBytes(byteData.buffer
+        .asUint8List(byteData.offsetInBytes, byteData.lengthInBytes));
+    setState(() {
+      if (file != null) {
+        _image = file;
+      } else {
+        print('No image selected.');
+      }
+    });
+    return _image;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,27 +83,53 @@ class _MyHomePageState extends State<MyHomePage> {
             Stack(
               alignment: Alignment.center,
               children: [
-                Container(
-                  width: 150.0,
-                  height: 150.0,
-                  decoration: new BoxDecoration(
-                      border: Border.all(
-                        color: Color(0xFF4169e1),
-                        width: 5,
+                _image != null
+                    ? Container(
+                        width: 150.0,
+                        height: 150.0,
+                        decoration: new BoxDecoration(
+                          border: Border.all(
+                            color: Color(0xFF4169e1),
+                            width: 5,
+                          ),
+                          shape: BoxShape.circle,
+                          image: new DecorationImage(
+                            fit: BoxFit.fill,
+                            image: new FileImage(_image),
+                          ),
+                        ),
+                      )
+                    : Container(
+                        width: 150.0,
+                        height: 150.0,
+                        decoration: new BoxDecoration(
+                          border: Border.all(
+                            color: Color(0xFF4169e1),
+                            width: 5,
+                          ),
+                          shape: BoxShape.circle,
+                          image: new DecorationImage(
+                            fit: BoxFit.fill,
+                            image: new ExactAssetImage(
+                                'assets/images/profilePic1.jpg'),
+                          ),
+                        ),
                       ),
-                      shape: BoxShape.circle,
-                      image: new DecorationImage(
-                        fit: BoxFit.fill,
-                        image: ExactAssetImage('assets/images/profilePic1.jpg'),
-                      )),
-                ),
                 Align(
                   alignment: Alignment.center,
                   child: Padding(
                     padding: EdgeInsets.fromLTRB(100, 0, 0, 100),
                     child: ElevatedButton(
-                      onPressed: () {
-                        print(dataObj['email1']);
+                      onPressed: () async {
+                        final returnedData = await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  EditImagePage(editImage: _image)),
+                        );
+                        setState(() {
+                          _image = returnedData;
+                        });
                       },
                       child: Icon(Icons.create_sharp, color: Color(0xFF4169e1)),
                       style: ElevatedButton.styleFrom(

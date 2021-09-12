@@ -56,7 +56,7 @@ class _EditPageState extends State<EditPage> {
               child: IconButton(
                 icon: Icon(Icons.arrow_back, size: 40, color: Colors.black),
                 onPressed: () {
-                  Navigator.pop(context);
+                  Navigator.pop(context, widget.data);
                 },
               ),
             ))
