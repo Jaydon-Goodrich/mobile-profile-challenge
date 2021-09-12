@@ -34,8 +34,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   var dataObj = {
     'name': 'Jaydon Goodrich',
-    'phone': '(801) 673-5586',
-    'email': 'JaydonGoodrich@gmail.com',
+    'phone': '(801) 123-4567',
+    'email': 'JaydonGoodrichTest@gmail.com',
     'about_me': 'This is a little about me and who I am.'
   };
 
